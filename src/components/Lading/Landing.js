@@ -6,6 +6,7 @@ const Hero = styled.div`
   /* border: 1px solid purple; */
   height: 92vh;
   overflow: hidden;
+  animation: fade-in 3s ;
 
   img {
     object-fit: cover;
@@ -26,6 +27,13 @@ const Hero = styled.div`
     width: 70%;
     text-align: center;
   }
+
+  @keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 `;
 
 class Landing extends Component {
@@ -42,21 +50,27 @@ class Landing extends Component {
   };
 
   componentDidMount() {
-    this.randomNum();
+    this.randomNum()
+
   }
 
-  randomNum() {
+
+
+  randomNum ()  {
     const ceiling = this.state.heroImages.length;
     const index = Math.floor(Math.random() * (ceiling - 1) + 1);
     return index;
   }
+
+
 
   render() {
     let heroImage = this.state.heroImages[this.randomNum()];
     return (
       <>
         <Hero>
-          <h1 id="motto">meet your next favorite book</h1>
+            <h1 id="motto">meet your next favorite book</h1> 
+          
           <img src={`${heroImage}`} alt="bookshelf" />
         </Hero>
       </>

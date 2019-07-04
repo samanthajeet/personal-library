@@ -3,6 +3,11 @@ import axios from 'axios';
 import styled from 'styled-components';
 import BookCard from '../BookCard/BookCard'
 
+
+const ExplorePage = styled.main`
+  background: #F9F9F9;
+  height: 100%;
+`
 const MappedBooks = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -30,8 +35,10 @@ class Explore extends Component {
         }&key=${GoogleBooksApi}`
       )
       .then(response => {
-        this.setState({ bookSearchResults: response.data.items }) ;
-        console.log(this.state.bookSearchResults[0])
+        if(response.data.items){
+          this.setState({ bookSearchResults: response.data.items }) ;
+          console.log(this.state.bookSearchResults[0])
+        }
       });
 
     }
@@ -54,7 +61,7 @@ class Explore extends Component {
         )
       })
     return ( 
-      <div>
+      <ExplorePage>
         <h1>explore</h1>
         <form onSubmit={() => this.searchBooks()}>
           <input value={this.state.userInput} type="text" onChange={(e) => this.handleOnChange('userInput', e.target.value)} autoFocus/>
@@ -63,7 +70,7 @@ class Explore extends Component {
 
         {mappedBooks}
       </MappedBooks>
-      </div>
+      </ExplorePage>
      );
   }
 }
