@@ -3,14 +3,15 @@ import axios from 'axios';
 import styled from 'styled-components';
 import BookCard from '../BookCard/BookCard'
 
-import { ExplorePage, MappedBooks, SubmitForm } from './style'
+import { ExplorePage, MappedBooks, SubmitForm, ExploreUpper } from './style'
 
 
 
 class Explore extends Component {
   state = { 
     userInput: '',
-    bookSearchResults: []
+    bookSearchResults: [],
+    exploreImages: ['https://images.unsplash.com/photo-1514894780887-121968d00567?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2104&q=80']
    }
 
 
@@ -54,11 +55,14 @@ class Explore extends Component {
         )
       })
     return ( 
-      <ExplorePage>
-        <h1>explore</h1>
+      <ExplorePage> 
+        <ExploreUpper>
         <SubmitForm onSubmit={() => this.searchBooks()}>
+        <h2>search for your next favorte book</h2>
           <input value={this.state.userInput} type="text" onChange={(e) => this.handleOnChange('userInput', e.target.value)} autoFocus/>
         </SubmitForm>
+        <img src={this.state.exploreImages[0]} alt="explore"/>
+        </ExploreUpper>
       <MappedBooks>
 
         {mappedBooks}
