@@ -10,6 +10,7 @@ export const BookDetailPage = styled.main`
 export const BookImageHeader = styled.div`
   /* border: 1px solid green; */
   height: 15rem;
+  overflow:hidden;
   /* width: 100%; */
 
   /* background: linear-gradient(red, orange); */
@@ -19,6 +20,9 @@ export const BookImageHeader = styled.div`
     object-position: 0 -12rem;
     width: 100%;
     height: 100%;
+    filter: blur(.3rem);
+    -webkit-filter: blur(.3rem);
+
   }
 
   .header-book-info {

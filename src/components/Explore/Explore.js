@@ -3,20 +3,13 @@ import axios from 'axios';
 import styled from 'styled-components';
 import BookCard from '../BookCard/BookCard'
 
+import { ExplorePage, MappedBooks, SubmitForm } from './style'
 
-const ExplorePage = styled.main`
-  background: #F9F9F9;
-  height: 100%;
-`
-const MappedBooks = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
 
 
 class Explore extends Component {
   state = { 
-    userInput: 'harry potter',
+    userInput: '',
     bookSearchResults: []
    }
 
@@ -63,9 +56,9 @@ class Explore extends Component {
     return ( 
       <ExplorePage>
         <h1>explore</h1>
-        <form onSubmit={() => this.searchBooks()}>
+        <SubmitForm onSubmit={() => this.searchBooks()}>
           <input value={this.state.userInput} type="text" onChange={(e) => this.handleOnChange('userInput', e.target.value)} autoFocus/>
-        </form>
+        </SubmitForm>
       <MappedBooks>
 
         {mappedBooks}

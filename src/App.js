@@ -10,6 +10,7 @@ const Applicaiton = styled.div`
   background: #F9F9F9;
   height: 100%;
   width: 100vw;
+  overflow-x: hidden;
 
   button: hover {
     cursor: pointer;

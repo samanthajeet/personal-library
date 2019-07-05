@@ -27,7 +27,7 @@ class BookDetail extends Component {
     let response = await axios.get(
       `https://www.googleapis.com/books/v1/volumes/${id}?key=${GoogleBooksApi}`
     );
-    console.log(new Date())
+    console.log(response.data.volumeInfo)
     await this.setState({
       bookInfo: response.data.volumeInfo,
       images: response.data.volumeInfo.imageLinks,
@@ -44,7 +44,7 @@ class BookDetail extends Component {
         'Access-Control-Allow-Origin': '*',
       }
     }).then(response => {
-      console.log(3, response.config.url)
+      // console.log(3, response.config.url)
       let img = response.config.url
       Vibrant.from(img).getPalette((err, palette) => {
         let palette2 = {};
@@ -54,7 +54,7 @@ class BookDetail extends Component {
         this.setState({
           palette: palette2
         });
-        console.log(this.state.palette);
+        // console.log(this.state.palette);
       });
     })
     // let img = 'http://covers.openlibrary.org/b/isbn/0060652926-L.jpg';
@@ -70,8 +70,8 @@ class BookDetail extends Component {
 
   render() {
     let { authors } = this.state;
-    let { title, description, averageRating, printedPageCount,publishedDate } = this.state.bookInfo;
-    let { extraLarge, large, medium } = this.state.images;
+    let { title, averageRating, printedPageCount,publishedDate } = this.state.bookInfo;
+    let { extraLarge, large, medium, thumbnail } = this.state.images;
     let {
       Vibrant,
       Muted,
@@ -82,11 +82,13 @@ class BookDetail extends Component {
     } = this.state.palette;
     return (
       <BookDetailPage >
-        <BookImageHeader style={{background: `linear-gradient(${LightVibrant}, ${Vibrant}, ${DarkVibrant}`}}>
-          {/* <img
-            src={extraLarge ? extraLarge : large ? large : medium}
+        <BookImageHeader 
+        // style={{background: `linear-gradient(${LightVibrant}, ${Vibrant}, ${DarkVibrant}`}}
+        >
+          <img
+            src={extraLarge ? extraLarge : large ? large : medium ? medium : thumbnail}
             alt={title}
-          /> */}
+          />
           <div className="header-book-info">
             <h1>{title}</h1>
             <h3>by {authors}</h3>
@@ -96,7 +98,7 @@ class BookDetail extends Component {
         <BookDetailBody>
           <div id="capture" className="left-panel box-dropsh">
             <div id="capture"  className="book-detail-cover" >
-              <img  src={medium} alt={title} id="capture" />
+              <img  src={medium ? medium : thumbnail} alt={title} id="capture" />
             </div>
           </div>
           <div className="center-panel ">
