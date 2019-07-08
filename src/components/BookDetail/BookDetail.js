@@ -5,7 +5,7 @@ import * as Vibrant from "node-vibrant";
 // import pixels from "image-palette";
 // import html2canvas from 'html2canvas';
 
-import { BookDetailPage, BookImageHeader, BookDetailBody } from "./style";
+import { BookDetailPage, BookImageHeader, BookDetailBody, Loading } from "./style";
 
 
 class BookDetail extends Component {
@@ -14,7 +14,7 @@ class BookDetail extends Component {
     images: {},
     authors: [],
     palette: [],
-    canvas: ''
+    loading: true
   };
 
   componentDidMount() {
@@ -57,6 +57,7 @@ class BookDetail extends Component {
         // console.log(this.state.palette);
       });
     })
+    // this.setState({ loading: false})
     // let img = 'http://covers.openlibrary.org/b/isbn/0060652926-L.jpg';
     // console.log(img);
   }
@@ -82,6 +83,13 @@ class BookDetail extends Component {
     } = this.state.palette;
     return (
       <BookDetailPage >
+        {this.state.loading ? (
+          <Loading>
+
+            <i class="fas fa-book-dead"></i>
+          </Loading>
+        ): (
+          <>
         <BookImageHeader 
         // style={{background: `linear-gradient(${LightVibrant}, ${Vibrant}, ${DarkVibrant}`}}
         >
@@ -90,8 +98,8 @@ class BookDetail extends Component {
             alt={title}
           />
           <div className="header-book-info">
-            <h1>{title}</h1>
-            <h3>by {authors}</h3>
+            <h1 style={{ color: `${DarkVibrant}`}} >{title}</h1>
+            <h3 style={{ color: `${LightMuted}`}} >by {authors}</h3>
           </div>
         </BookImageHeader>
 
@@ -113,13 +121,16 @@ class BookDetail extends Component {
           </div>
           <div className="right-panel box-dropsh" />
         </BookDetailBody>
-        <p style={{background: `${Vibrant}`}}>vibrant</p>
+        </>
+        )}
+        {/* <p style={{background: `${Vibrant}`}}>vibrant</p>
         <p style={{background: `${Muted}`}}>muted</p>
         <p style={{background: `${LightVibrant}`}}>light vibrant</p>
         <p style={{background: `${LightMuted}`}}>light muted</p>
         <p style={{background: `${DarkVibrant}`}}>DarkVibrant</p>
-        <p style={{background: `${DarkMuted}`}}>DarkMuted</p>
+        <p style={{background: `${DarkMuted}`}}>DarkMuted</p> */}
       </BookDetailPage>
+       
     );
   }
 }

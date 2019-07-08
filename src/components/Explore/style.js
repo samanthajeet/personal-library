@@ -53,8 +53,8 @@ export const SubmitForm = styled.form`
     height: 20%;
     background: white;
     outline: none;
-    font-size: 4.5rem;
-    padding: .5rem;
+    font-size: 4rem;
+    padding: 1rem;
     border: none;
     animation: extend 2s;
     }

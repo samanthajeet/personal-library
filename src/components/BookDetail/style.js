@@ -4,8 +4,18 @@ import styled from 'styled-components';
 export const BookDetailPage = styled.main`
   * {
     margin: 0;
+    height: 100%
   }
 `;
+export const Loading = styled.div`
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 15rem;
+
+`
 
 export const BookImageHeader = styled.div`
   /* border: 1px solid green; */
@@ -22,6 +32,7 @@ export const BookImageHeader = styled.div`
     height: 100%;
     filter: blur(.3rem);
     -webkit-filter: blur(.3rem);
+    overflow-x: hidden;
 
   }
 

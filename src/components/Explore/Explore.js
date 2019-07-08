@@ -19,22 +19,15 @@ class Explore extends Component {
      this.setState({[prop]:val })
     }
 
-    searchBooks(){
+    searchBooks= async() => {
       const GoogleBooksApi = process.env.REACT_APP_GOOGLEBOOKS;
 
-      axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${
-          this.state.userInput
-        }&key=${GoogleBooksApi}`
-      )
-      .then(response => {
-        if(response.data.items){
-          this.setState({ bookSearchResults: response.data.items }) ;
-          console.log(this.state.bookSearchResults[0])
-        }
-      });
-
+      let response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.userInput}&key=${GoogleBooksApi}`)
+      console.log(response)
+      if(response.data.items[0]){
+        this.setState({ bookSearchResults: response.data.items })
+      } 
+      
     }
 
     goToDetail(id){
@@ -42,15 +35,15 @@ class Explore extends Component {
     }
     
     render() { 
-
       let mappedBooks = this.state.bookSearchResults.map( book => {
         return(
           <div key={book.id} onClick={() => this.goToDetail(book.id)} >
-            <BookCard
-              title={book.volumeInfo.title}
-              cover={book.volumeInfo.imageLinks.thumbnail}
-              author={book.volumeInfo.authors[0]}
-            />
+              <BookCard
+                title={book.volumeInfo.title}
+                cover={book.volumeInfo.imageLinks.thumbnail}
+                author={book.volumeInfo.authors[0]}
+              />
+            
           </div>
         )
       })
@@ -58,7 +51,7 @@ class Explore extends Component {
       <ExplorePage> 
         <ExploreUpper>
         <SubmitForm onSubmit={() => this.searchBooks()}>
-        <h2>search for your next favorte book</h2>
+        <h2>search for your next favorite book</h2>
           <input value={this.state.userInput} type="text" onChange={(e) => this.handleOnChange('userInput', e.target.value)} autoFocus/>
         </SubmitForm>
         <img src={this.state.exploreImages[0]} alt="explore"/>
