@@ -24,15 +24,17 @@ export const BookImageHeader = styled.div`
   /* width: 100%; */
 
   /* background: linear-gradient(red, orange); */
-
+  overflow-x: hidden;
+  -webkit-overflow-x: hidden;
   img {
     object-fit: cover;
     object-position: 0 -12rem;
     width: 100%;
     height: 100%;
-    filter: blur(.3rem);
-    -webkit-filter: blur(.3rem);
+    filter: blur(.1rem);
+    -webkit-filter: blur(.1rem);
     overflow-x: hidden;
+    -webkit-overflow-x: hidden;
 
   }
 

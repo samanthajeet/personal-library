@@ -96,7 +96,7 @@ class BookDetail extends Component {
             alt={title}
           />
           <div className="header-book-info">
-            <h1 style={{ color: `${DarkVibrant}`}} >{title}</h1>
+            <h1 style={{ color: `${Vibrant}`}} >{title}</h1>
             <h3 style={{ color: `${LightMuted}`}} >by {authors}</h3>
           </div>
         </BookImageHeader>
@@ -121,12 +121,12 @@ class BookDetail extends Component {
         </BookDetailBody>
         </>
         )}
-        {/* <p style={{background: `${Vibrant}`}}>vibrant</p>
+        <p style={{background: `${Vibrant}`}}>vibrant</p>
         <p style={{background: `${Muted}`}}>muted</p>
         <p style={{background: `${LightVibrant}`}}>light vibrant</p>
         <p style={{background: `${LightMuted}`}}>light muted</p>
         <p style={{background: `${DarkVibrant}`}}>DarkVibrant</p>
-        <p style={{background: `${DarkMuted}`}}>DarkMuted</p> */}
+        <p style={{background: `${DarkMuted}`}}>DarkMuted</p>
       </BookDetailPage>
        
     );
