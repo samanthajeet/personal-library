@@ -37,7 +37,7 @@ export const BookImageHeader = styled.div`
   }
 
   .header-book-info {
-    border: 1px solid white;
+    /* border: 1px solid white; */
     background: white;
     position: absolute;
     top: 15%;
@@ -45,9 +45,11 @@ export const BookImageHeader = styled.div`
     /* transform: translate(-50%, -50%); */
     color: black;
     /* width: 70%; */
+    height: auto;
     text-align: left;
     padding: 0.25rem;
     width: 50%;
+    /* border: 1px solid blue; */
 
     h1 {
       font-size: 2.5rem;

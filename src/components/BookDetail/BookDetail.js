@@ -33,7 +33,6 @@ class BookDetail extends Component {
       images: response.data.volumeInfo.imageLinks,
       authors: response.data.volumeInfo.authors
     });
-
     this.createVibrant()
   };
 
@@ -57,7 +56,7 @@ class BookDetail extends Component {
         // console.log(this.state.palette);
       });
     })
-    // this.setState({ loading: false})
+    this.setState({ loading: false})
     // let img = 'http://covers.openlibrary.org/b/isbn/0060652926-L.jpg';
     // console.log(img);
   }
@@ -85,8 +84,7 @@ class BookDetail extends Component {
       <BookDetailPage >
         {this.state.loading ? (
           <Loading>
-
-            <i class="fas fa-book-dead"></i>
+            null
           </Loading>
         ): (
           <>
